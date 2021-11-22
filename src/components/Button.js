@@ -2,11 +2,12 @@ import calculatorButtons from '../globals/calculator-button-data.js'
 
 
 
-function Button({ className, value, onClick, type, text }) {
+function Button({ className, value, capturingButtonValue, type, text }) {
 
     function captureKeyValue(e){
-        onClick(e.target.value)
-        console.log(e.target.value)
+        //var valueOfKey = this.value
+        capturingButtonValue(e.target.value)
+        console.log(e.target.value + "from Button Component")
     }
 
     return (
