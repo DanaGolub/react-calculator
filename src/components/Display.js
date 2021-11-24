@@ -1,7 +1,7 @@
-function Display({ button }) {
+function Display({ valuesEntered }) {
     return (
         <header>
-            <h1>{button}</h1>
+            <h1>{valuesEntered}</h1>
         </header>
     );
 }

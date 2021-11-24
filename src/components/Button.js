@@ -2,7 +2,7 @@ import calculatorButtons from '../globals/calculator-button-data.js'
 
 
 
-function Button({ className, value, capturingButtonValue, type, text }) {
+function Button({ className, value, capturingButtonValue, type, text, index }) {
 
     // function captureKeyValue(e){
     //     //var valueOfKey = this.value
@@ -11,7 +11,7 @@ function Button({ className, value, capturingButtonValue, type, text }) {
     // }
 
     return (
-        <button className={className} value={value} onClick={() => capturingButtonValue(value)} type={type}>
+        <button className={className} value={value} onClick={() => capturingButtonValue(index)} type={type}>
             <h1>{text}</h1>
         </button>
     );
