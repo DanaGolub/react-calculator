@@ -5,24 +5,26 @@ import { calculatorButtons } from "../globals/calculator-button-data";
 
 function App() {
 
-  const [currentIndexOfCalcKey, setcurrentIndexOfCalcKey] = useState();
-  //const [arrayOfNumbers, setArrayOfNumbers] = useState([]);
+  const [currentIndexOfCalcKey, setcurrentIndexOfCalcKey] = useState(-1);
   const [currentNumber, setCurrentNumber] = useState("");
-
+  const [currentOperator, setCurrentOperator] = useState("");
+  //const [currentNumber, setCurrentNumber] = useState("");
   var arrayOfNums = []
   var arrayOfOperators = []
-  //var currentNumber = ""
-  var currentOperator = ""
+  //var currentOperator = ""
+
 //value will be passed into the Display component, all math operation in a line
   var displayString = ""
-
 
   //capturing the index in the array of Calculator Key-Objects:
   function capturingButtonValue(indexInArrOfButtns) {
       console.log(indexInArrOfButtns)
-      // console.log(currentNumber + "current number now")
+      console.log("1")
+      console.log(currentIndexOfCalcKey + " current index is this: ")
 
       setcurrentIndexOfCalcKey(indexInArrOfButtns)
+      console.log("2")
+      console.log(currentIndexOfCalcKey + " current index is this: ")
       basicLogic(indexInArrOfButtns)
   }
 
@@ -30,19 +32,39 @@ function App() {
   function basicLogic(indexPressed) {
     if (calculatorButtons[indexPressed].type === 'number' || calculatorButtons[indexPressed].type === 'decimal')
     {
-      console.log(calculatorButtons[indexPressed].value + "value of number pressed")
-      //setArrayOfNumbers(...arrayOfNumbers, calculatorButtons[indexPressed].value)
-      //currentNumber = currentNumber + calculatorButtons[indexPressed].value
       setCurrentNumber(currentNumber + calculatorButtons[indexPressed].value)
-      console.log(currentNumber)
+      console.log(calculatorButtons[indexPressed].value + "value of number pressed")
+      console.log(currentNumber + "current number from if statement")
     } 
     else if (calculatorButtons[indexPressed].type === 'operator')
     {
-      currentOperator = currentOperator + calculatorButtons[indexPressed].value
+      console.log(calculatorButtons[indexPressed].text)
+      console.log(currentOperator + " is the current operator from else if st")
+      setCurrentOperator(currentOperator + calculatorButtons[indexPressed].text)
+      console.log(currentOperator + " current operator from if 2")
+    }
+    else if (calculatorButtons[indexPressed].type === 'enter')
+    {
+      
+    }
+    else if (calculatorButtons[indexPressed].type === 'sign')
+    {
+
+    }
+    else if (calculatorButtons[indexPressed].type === 'clear')
+    {
+
+    }
+    else if (calculatorButtons[indexPressed].type === 'memory')
+    {
+
     }
     //after categorizing and sorting into strings-categories, pushing the values into separate arrays
     arrayOfNums.push(currentNumber)
     arrayOfOperators.push(currentOperator)
+    console.log(currentNumber)
+    console.log(currentOperator)
+    console.log("============================")
   }
 
 
@@ -69,3 +91,8 @@ export default App;
 
 // const [currentNumber, setCurrentNumber] = useState("");
 // const [currentOperator, setCurrentOperator] = useState("");
+
+      //setArrayOfNumbers(...arrayOfNumbers, calculatorButtons[indexPressed].value)
+      //currentNumber = currentNumber + calculatorButtons[indexPressed].value
+
+      // eval()
