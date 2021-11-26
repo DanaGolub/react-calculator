@@ -1,8 +1,8 @@
 function Display({ valuesEntered }) {
     return (
-        <header>
+        <div className="display-box">
             <h1>{valuesEntered}</h1>
-        </header>
+        </div>
     );
 }
 

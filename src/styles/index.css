@@ -6,3 +6,140 @@ html {
 *, *:before, *:after {
     box-sizing: inherit;
 }
+
+
+h1 {
+
+}
+
+.display-box {
+    text-align: right;
+    color: white;
+    background-color: black;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 15px;
+    padding: 0 10px;
+    border-radius: 10px;
+    justify-content: flex-end;
+    font-weight: bold;
+    box-sizing: border-box;
+    max-width: 700px;
+}
+
+.buttonsArrangement {
+    max-width: 600px;
+    width: 100%;
+    display: grid;
+
+    grid-template-areas: "1 2 3 addop addop"
+                         "4 5 6 subtrop subtrop"
+                         "7 8 9 mult ac"
+                         "c 0 equalop divide";
+/*                          
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+} */
+
+grid-template-columns: repeat(5, 1fr);
+grid-template-rows: repeat(4, 1fr);
+grid-gap: 10px;
+}
+/* 
+btn {
+    border: none;
+    background-color: rgb(80, 60, 209);
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    outline: none;
+  } */
+
+  .wrapper {
+    width: 340px;
+    height: 540px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #485461;
+    background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+  }
+  
+
+.acclearbtn {
+    grid-area: ac;
+}
+
+.cclearbtn {
+    grid-area: c;
+}
+
+.onenumberbtn{
+    grid-area: 1;
+}
+
+.twonumberbtn{
+    grid-area: 2;
+}
+
+.threenumberbtn{
+       grid-area: 3; 
+}
+
+.fournumberbtn{
+        grid-area: 4;
+}
+
+.fivenumberbtn{
+    grid-area: 5;    
+}
+
+.sixnumberbtn{
+    grid-area: 6;    
+}
+.sevennumberbtn{
+    grid-area: 7;    
+}
+
+.eightnnumberbtn{
+     grid-area: 8;   
+}
+
+.ninenumberbtn{
+     grid-area: 9;   
+}
+
+.zeronumberbtn{
+    grid-area: 0;    
+}
+
+.multiplyoperatorbtn{
+    grid-area: mult;
+}
+
+.divideoperatorbtn{
+    grid-area: divide;
+}
+
+.addoperatorbtn{
+    grid-area: addop;
+}
+
+.subtractoperatorbtn {
+    grid-area: subtrop;
+}
+
+.equaloperatorbtn {
+    grid-area: equalop;
+}
+/* 
+"ac num num num operator operator"
+                         "empty num num num operator operator"
+                         "empty empty num num operator operator"
+                         "empty empty empty num empty operator";   */
+
+                             /* grid-template-areas: "ac 7 8 9 mult divide"
+                         "c 4 5 6 addop subtrop"
+                         " empty 1 2 3 addop subtrop"
+                         " empty empty 0 empty equalop equalop";  */
