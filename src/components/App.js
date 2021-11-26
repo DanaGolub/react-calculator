@@ -26,8 +26,8 @@ function App() {
   //var arrayOfNums = []
   //var arrayOfOperators = []
   //var displayString = ""
-  var operatorPressedReg = false
-  var enterPressedReg = false
+  let operatorPressedReg = false
+  let enterPressedReg = false
   let newNumber = ''
   let newOperator = ''
   //capturing the index in the array of Calculator Key-Objects:
@@ -49,14 +49,18 @@ function App() {
   function basicLogic(indexPressed) {
     //////solution ---> while loop while operator or enter not pressed??? then can accumulate values within here>> ???
     if (calculatorButtons[indexPressed].type === 'number' || calculatorButtons[indexPressed].type === 'decimal') {
-      newNumber = newNumber + String(currentNumber + String(calculatorButtons[indexPressed].value))
+      // newNumber =  String(currentNumber + String(calculatorButtons[indexPressed].value))
+      newNumber =  String(currentNumber + String(calculatorButtons[indexPressed].value))
+      console.log("checking the operatorPressedBool " + operatorPressedReg)
 
       console.log(newNumber)
       //=============================================================it reads newNum ====================================================================================
 
       displayOutput ? setDisplayOutput(displayOutput + newNumber) : setDisplayOutput(newNumber);
+      // displayOutput ? setDisplayOutput(displayOutput + newNumber) : setDisplayOutput(newNumber);
       //console.log(displayOutput + "this is the displayed output so far")
       setCurrentNumber(newNumber);
+      setArrayOfNumbers([...arrayOfNumbers, currentNumber]);
       console.log(currentNumber + "this is the displayed output so far")
       console.log(newNumber + "this is the displayed output so far with reg var")
       // 
@@ -66,41 +70,48 @@ function App() {
     else if (calculatorButtons[indexPressed].type === 'operator') {
       //console.log(calculatorButtons[indexPressed].text)
       newOperator = calculatorButtons[indexPressed].text
-      console.log(newOperator + "this is the newOperator reg var")
+      console.log(newOperator + " this is the newOperator reg var")
 
-      console.log(operatorPressedReg + "oprator should be false ->")
+      console.log(operatorPressedReg + " oprator should be false ->")
       operatorPressedReg = true
       //setOperatorPressed(true)
-      console.log(operatorPressedReg + "oprator should be true ->")
+      console.log(operatorPressedReg + " oprator should be true ---------------------------- ->")
       displayOutput ? setDisplayOutput(displayOutput + newOperator) : setDisplayOutput(newOperator)
       setCurrentOperator(newOperator);
-      console.log(currentOperator + "this is the currentOperator state var")
+      console.log(currentOperator + " this is the currentOperator state var")
+      setArrayOfOperators([...arrayOfOperators, currentOperator])
     }
 
     else if (calculatorButtons[indexPressed].type === 'enter') {
 
       //setEnterPressed(true)
       enterPressedReg = true
-      console.log(enterPressedReg + "enter pressed here, should be true")
+      console.log(enterPressedReg + " enter pressed here, should be true")
     }
 
+    console.log(operatorPressedReg + " should be true ------->>>>>>>>>>>>>>>")
     //after categorizing and sorting into strings-categories, pushing the values into separate arrays before operator is pressed
     if (operatorPressedReg) {
+
       setArrayOfNumbers([...arrayOfNumbers, currentNumber]);
-      setArrayOfOperators([...arrayOfOperators, currentOperator])
-      console.log(currentNumber + "current number from ifOperatorPressed")
-      
+      console.log("number: "+currentNumber)
+      console.log("Array0 " + arrayOfNumbers[0])
+      //setArrayOfOperators([...arrayOfOperators, currentOperator])
+      setDisplayOutput('')
+      console.log(currentNumber + " current number from ifOperatorPressed, state var")
       setCurrentNumber('')
       setCurrentOperator('')
-      operatorPressedReg = false
-      //setOperatorPressed(false)
-
+      newArrayOfNumbers = [...arrayOfNumbers, newNumber];
+      newArrayOfOperators = [...arrayOfOperators, newOperator]
     }
 
     if (enterPressedReg) {
 
 
       setArrayOfNumbers([...arrayOfNumbers, currentNumber]);
+      console.log(arrayOfNumbers[0])
+      console.log(arrayOfNumbers[1])
+      
       setArrayOfOperators([...arrayOfOperators, currentOperator])
 
       newArrayOfNumbers = [...arrayOfNumbers, newNumber];
@@ -116,12 +127,16 @@ function App() {
       console.log("we are here")
       console.log(newArrayOfNumbers[0])
       console.log(newArrayOfNumbers[1])
-      // console.log(newArrayOfNumbers[2])
-      // console.log(newArrayOfNumbers[3])
-      // console.log(newArrayOfNumbers[4])
+
       console.log("and then we are here")
       for (let i = 0; i < newArrayOfOperators.length; i++) 
       {
+        console.log("we are here")
+        console.log(newArrayOfNumbers[0])
+        console.log(newArrayOfNumbers[1])
+
+        console.log("and then we are here")
+        console.log("==== index::")
         console.log(i)
         console.log(newArrayOfNumbers[i])
         displayAccum = displayAccum + String(newArrayOfNumbers[i]) + String(newArrayOfOperators[i])
