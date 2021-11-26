@@ -26,8 +26,8 @@ function App() {
   //var arrayOfNums = []
   //var arrayOfOperators = []
   //var displayString = ""
-  //var operatorPressed = false
-  //var enterPressed = false
+  var operatorPressedReg = false
+  var enterPressedReg = false
   //capturing the index in the array of Calculator Key-Objects:
 
 
@@ -46,41 +46,55 @@ function App() {
 
   function basicLogic(indexPressed) {
     if (calculatorButtons[indexPressed].type === 'number' || calculatorButtons[indexPressed].type === 'decimal') {
-      let newNumber = currentNumber + String(calculatorButtons[indexPressed].value)
+      let newNumber = String(currentNumber + String(calculatorButtons[indexPressed].value))
 
       console.log(newNumber)
       //=============================================================it reads newNum ====================================================================================
 
       displayOutput ? setDisplayOutput(displayOutput + newNumber) : setDisplayOutput(newNumber);
-      console.log(displayOutput)
+      //console.log(displayOutput + "this is the displayed output so far")
       setCurrentNumber(newNumber);
+      console.log(currentNumber + "this is the displayed output so far")
+      console.log(newNumber + "this is the displayed output so far with reg var")
       // 
 
     }
+
     else if (calculatorButtons[indexPressed].type === 'operator') {
       //console.log(calculatorButtons[indexPressed].text)
       let newOperator = calculatorButtons[indexPressed].text
-      setOperatorPressed(true)
+      console.log(newOperator + "this is the newOperator reg var")
+
+      console.log(operatorPressed + "oprator should be false ->")
+      operatorPressedReg = true
+      //setOperatorPressed(true)
+      console.log(operatorPressedReg + "oprator should be true ->")
       displayOutput ? setDisplayOutput(displayOutput + newOperator) : setDisplayOutput(newOperator)
       setCurrentOperator(newOperator);
+      console.log(currentOperator + "this is the currentOperator state var")
     }
+
     else if (calculatorButtons[indexPressed].type === 'enter') {
-      setEnterPressed(true)
+
+      //setEnterPressed(true)
+      enterPressedReg = true
+      console.log(enterPressedReg + "enter pressed here, should be true")
     }
 
     //after categorizing and sorting into strings-categories, pushing the values into separate arrays before operator is pressed
-    if (operatorPressed) {
+    if (operatorPressedReg) {
       setArrayOfNumbers([...arrayOfNumbers, currentNumber]);
       setArrayOfOperators([...arrayOfOperators, currentOperator])
       console.log(currentNumber + "current number from ifOperatorPressed")
       
       setCurrentNumber('')
       setCurrentOperator('')
-      setOperatorPressed(false)
+      operatorPressedReg = false
+      //setOperatorPressed(false)
 
     }
 
-    if (enterPressed) {
+    if (enterPressedReg) {
 
 
       setArrayOfNumbers([...arrayOfNumbers, currentNumber]);
@@ -92,7 +106,8 @@ function App() {
 
       setCurrentNumber('')
       setCurrentOperator('')
-      setEnterPressed(false)
+      //setEnterPressed(false)
+      enterPressedReg = false
 
       let displayAccum = ''
       console.log("we are here")
