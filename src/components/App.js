@@ -15,8 +15,8 @@ function App() {
   const [arrayOfNumbers, setArrayOfNumbers] = useState([]);
   const [arrayOfOperators, setArrayOfOperators] = useState([]);
   //const [display, setDisplay] = useState('')
-  const [operatorPressed, setOperatorPressed] = useState(false);
-  const [enterPressed, setEnterPressed] = useState(false);
+  //const [operatorPressed, setOperatorPressed] = useState(false);
+  //const [enterPressed, setEnterPressed] = useState(false);
 
   var indexPassed = -1
   var newArrayOfNumbers = []
@@ -28,6 +28,8 @@ function App() {
   //var displayString = ""
   var operatorPressedReg = false
   var enterPressedReg = false
+  let newNumber = ''
+  let newOperator = ''
   //capturing the index in the array of Calculator Key-Objects:
 
 
@@ -45,8 +47,9 @@ function App() {
 
 
   function basicLogic(indexPressed) {
+    //////solution ---> while loop while operator or enter not pressed??? then can accumulate values within here>> ???
     if (calculatorButtons[indexPressed].type === 'number' || calculatorButtons[indexPressed].type === 'decimal') {
-      let newNumber = String(currentNumber + String(calculatorButtons[indexPressed].value))
+      newNumber = newNumber + String(currentNumber + String(calculatorButtons[indexPressed].value))
 
       console.log(newNumber)
       //=============================================================it reads newNum ====================================================================================
@@ -62,10 +65,10 @@ function App() {
 
     else if (calculatorButtons[indexPressed].type === 'operator') {
       //console.log(calculatorButtons[indexPressed].text)
-      let newOperator = calculatorButtons[indexPressed].text
+      newOperator = calculatorButtons[indexPressed].text
       console.log(newOperator + "this is the newOperator reg var")
 
-      console.log(operatorPressed + "oprator should be false ->")
+      console.log(operatorPressedReg + "oprator should be false ->")
       operatorPressedReg = true
       //setOperatorPressed(true)
       console.log(operatorPressedReg + "oprator should be true ->")
@@ -100,8 +103,8 @@ function App() {
       setArrayOfNumbers([...arrayOfNumbers, currentNumber]);
       setArrayOfOperators([...arrayOfOperators, currentOperator])
 
-      newArrayOfNumbers = [...arrayOfNumbers, currentNumber];
-      newArrayOfOperators = [...arrayOfOperators, currentOperator]
+      newArrayOfNumbers = [...arrayOfNumbers, newNumber];
+      newArrayOfOperators = [...arrayOfOperators, newOperator]
 
 
       setCurrentNumber('')
@@ -113,9 +116,9 @@ function App() {
       console.log("we are here")
       console.log(newArrayOfNumbers[0])
       console.log(newArrayOfNumbers[1])
-      console.log(newArrayOfNumbers[2])
-      console.log(newArrayOfNumbers[3])
-      console.log(newArrayOfNumbers[4])
+      // console.log(newArrayOfNumbers[2])
+      // console.log(newArrayOfNumbers[3])
+      // console.log(newArrayOfNumbers[4])
       console.log("and then we are here")
       for (let i = 0; i < newArrayOfOperators.length; i++) 
       {
