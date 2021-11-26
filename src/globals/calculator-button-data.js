@@ -128,13 +128,15 @@ export const calculatorButtons = [
     {
         type: 'operator',
         className: 'multiply',
-        text: '\u00d7',
+        // text: '\u00d7',
+        text: '*',
         value: 'Multiply',
     },
     {
         type: 'operator',
         className: 'divide',
-        text: '\u00f7',
+        // text: '\u00f7',
+        text: '/',
         value: 'Divide',
     },
     {
