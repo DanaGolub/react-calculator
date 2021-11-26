@@ -12,7 +12,7 @@ function Button({ className, value, capturingButtonValue, type, text, index, Upd
     // }
 
     return (
-        <button className={`${className}${type}btn`} value={value} onClick={() => {capturingButtonValue(index); UpdateValues()}} type={type}>
+        <button className={`${className} ${type} btn`} value={value} onClick={() => {capturingButtonValue(index); UpdateValues()}} type={type}>
             <h1>{text}</h1>
         </button>
     );
