@@ -7,18 +7,14 @@ import '../styles/index.css'
 
 function App() {
 
-  // const [currentIndexOfCalcKey, setcurrentIndexOfCalcKey] = useState(-1);
-   const [displayOutput, setDisplayOutput] = useState();
-  // const [currentOperator, setCurrentOperator] = useState("");
-  //const [currentNumber, setCurrentNumber] = useState("");
-  //const [currentNumber, setCurrentNumber] = useState("");
+   const [currentIndexOfCalcKey, setcurrentIndexOfCalcKey] = useState(-1);
+   const [displayOutput, setDisplayOutput] = useState("");
 
-  // MW code...
   const [currentNumber, setCurrentNumber] = useState('');
   const [currentOperator, setCurrentOperator] = useState('');
   const [arrayOfNumbers, setArrayOfNumbers] = useState([]);
   const [arrayOfOperators, setArrayOfOperators] = useState([]);
-  const [display, setDisplay] = useState('')
+  //const [display, setDisplay] = useState('')
   const [operatorPressed, setOperatorPressed] = useState(false);
   const [enterPressed, setEnterPressed] = useState(false);
 
@@ -36,8 +32,8 @@ function App() {
 
 
   function capturingButtonValue(indexInArrOfButtns) {
-    //console.log(indexInArrOfButtns + " it does print")
     indexPassed = indexInArrOfButtns
+    setcurrentIndexOfCalcKey(indexInArrOfButtns)
     basicLogic(indexInArrOfButtns)
   }
 
@@ -50,97 +46,92 @@ function App() {
 
   function basicLogic(indexPressed) {
     if (calculatorButtons[indexPressed].type === 'number' || calculatorButtons[indexPressed].type === 'decimal') {
-      const newNumber = currentNumber + String(calculatorButtons[indexPressed].value)
+      let newNumber = currentNumber + String(calculatorButtons[indexPressed].value)
+
+      console.log(newNumber)
+      //=============================================================it reads newNum ====================================================================================
+
       displayOutput ? setDisplayOutput(displayOutput + newNumber) : setDisplayOutput(newNumber);
+      console.log(displayOutput)
       setCurrentNumber(newNumber);
       // 
 
     }
     else if (calculatorButtons[indexPressed].type === 'operator') {
       //console.log(calculatorButtons[indexPressed].text)
-      const newOperator = calculatorButtons[indexPressed].text
+      let newOperator = calculatorButtons[indexPressed].text
       setOperatorPressed(true)
-      //operatorPressed = true
       displayOutput ? setDisplayOutput(displayOutput + newOperator) : setDisplayOutput(newOperator)
       setCurrentOperator(newOperator);
     }
     else if (calculatorButtons[indexPressed].type === 'enter') {
-      //var enterPressed = true
       setEnterPressed(true)
     }
 
     //after categorizing and sorting into strings-categories, pushing the values into separate arrays before operator is pressed
     if (operatorPressed) {
-      //currentOperator = String(currentOperator)
-      //console.log(currentOperator)
-      //arrayOfNums.push(currentNumber)
-     // arrayOfOperators.push(currentOperator)
-
       setArrayOfNumbers([...arrayOfNumbers, currentNumber]);
       setArrayOfOperators([...arrayOfOperators, currentOperator])
+      console.log(currentNumber + "current number from ifOperatorPressed")
       
       setCurrentNumber('')
       setCurrentOperator('')
       setOperatorPressed(false)
-      //currentNumber = ""
-      // currentOperator = ""
-      //operatorPressed = false
+
     }
 
-    if (enterPressed) 
+    if (enterPressed) {
+
+
+      setArrayOfNumbers([...arrayOfNumbers, currentNumber]);
+      setArrayOfOperators([...arrayOfOperators, currentOperator])
 
       newArrayOfNumbers = [...arrayOfNumbers, currentNumber];
       newArrayOfOperators = [...arrayOfOperators, currentOperator]
 
-      //arrayOfNums.push(currentNumber)
-      //arrayOfOperators.push(currentOperator)
+
       setCurrentNumber('')
       setCurrentOperator('')
       setEnterPressed(false)
-      //currentOperator = ""
-      //enterPressed = false
 
       let displayAccum = ''
-      // displayString = displayString + String(arrayOfNums[i]) + String(arrayOfOperators[i])
-
+      console.log("we are here")
+      console.log(newArrayOfNumbers[0])
+      console.log(newArrayOfNumbers[1])
+      console.log(newArrayOfNumbers[2])
+      console.log(newArrayOfNumbers[3])
+      console.log(newArrayOfNumbers[4])
+      console.log("and then we are here")
       for (let i = 0; i < newArrayOfOperators.length; i++) 
       {
+        console.log(i)
         console.log(newArrayOfNumbers[i])
         displayAccum = displayAccum + String(newArrayOfNumbers[i]) + String(newArrayOfOperators[i])
         console.log(displayAccum)
-
       }
       
-      setDisplay(displayAccum + " " + eval(displayAccum))
-
-      //(setDisplayOutput(displayString + eval(displayString)))
-
-    //   let newArr = arrayOfNums.map(function(text,index){
-    //     return setDisplayOutput( text + ' ' + arrayOfOperators[index])
-    //  })
-
-     
-
-      // arrayOfOperators.map((oper, i) => setDisplayOutput (oper + oper))
-     // console.log(displayOutput)
+      // setDisplay(displayAccum + " " + eval(displayAccum))
+      setDisplayOutput(displayAccum)
+      console.log(displayAccum)
 
       //setDisplayOutput(displayString)
-      //console.log(displayString + "final output string")
-      //console.log(eval(displayString) + "final output val")
-    }
+
+    
     console.log("============================")
-  
+    }
+  }
 
   return (
     <div className="wrapper">
       <h1>React Calculator</h1>
-      <Display valuesEntered={display}/>
+      <Display valuesEntered={displayOutput}/>
       {/* <Display valuesEntered={displayString}/> */}
       <GroupingButtons capturingButtonValue={capturingButtonValue} UpdateValues={UpdateValues} />
     </div>
   );
 
-  }
+  
+}
 
 
 export default App;

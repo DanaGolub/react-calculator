@@ -27,25 +27,21 @@ h1 {
     max-width: 700px;
 }
 
-.buttonsArrangement {
-    max-width: 600px;
+/* .buttonsArrangement {
+    max-width: 100%;
     width: 100%;
     display: grid;
 
     grid-template-areas: "one two three addop addop"
-                         "four 5 6 subtrop subtrop"
-                         "7 8 9 mult ac"
-                         "c 0 equalop divide";
-/*                          
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr ;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-} */
+                         "four five six subtrop subtrop"
+                         "seven eight nine mult ac"
+                         "c zeroop equalop divide";
 
 grid-template-columns: repeat(5, 1fr);
 grid-template-rows: repeat(4, 1fr);
 grid-gap: 10px;
 }
-/* 
+
 btn {
     border: none;
     background-color: rgb(80, 60, 209);
@@ -67,72 +63,69 @@ btn {
   }
   
 .ac {
-    
-}
-.acclearbtn {
     grid-area: ac;
 }
 
-.cclearbtn {
+.c {
     grid-area: c;
 }
 
-.onenumberbtn{
-    grid-area: 1;
+.one{
+    grid-area: one;
 }
 
-.twonumberbtn{
-    grid-area: 2;
+.two{
+    grid-area: two;
 }
 
-.threenumberbtn{
-       grid-area: 3; 
+.three{
+       grid-area: three; 
 }
 
-.fournumberbtn{
-        grid-area: 4;
+.four{
+        grid-area: four;
 }
 
-.fivenumberbtn{
-    grid-area: 5;    
+.five{
+    grid-area: five;    
 }
 
-.sixnumberbtn{
-    grid-area: 6;    
+.six{
+    grid-area: six;    
 }
-.sevennumberbtn{
-    grid-area: 7;    
-}
-
-.eightnnumberbtn{
-     grid-area: 8;   
+.seven{
+    grid-area: seven;    
 }
 
-.ninenumberbtn{
-     grid-area: 9;   
+.eight{
+     grid-area: eight;   
 }
 
-.zeronumberbtn{
-    grid-area: 0;    
+.nine{
+     grid-area: nine;   
 }
 
-.multiplyoperatorbtn{
+.zero{
+    grid-area: zeroop;    
+}
+
+.multiply{
     grid-area: mult;
 }
 
-.divideoperatorbtn{
+.divide{
     grid-area: divide;
 }
 
-.addoperatorbtn{
+.add{
     grid-area: addop;
 }
 
-.subtractoperatorbtn {
+.subtract {
     grid-area: subtrop;
 }
 
-.equaloperatorbtn {
+.equal {
     grid-area: equalop;
 }
 /* 
